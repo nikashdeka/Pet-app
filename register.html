@@ -22,38 +22,6 @@
     </form>
   </div>
 
-  <script>
-    const form = document.getElementById('registerForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const requiredFields = Array.from(form.querySelectorAll('[required]'));
-
-    form.addEventListener('input', () => {
-      const isValid = requiredFields.every(input => input.value.trim() !== '');
-      submitBtn.disabled = !isValid;
-    });
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const reader = new FileReader();
-
-      reader.onload = function() {
-        const petData = {
-          ownerName: formData.get('ownerName'),
-          phone: formData.get('phone'),
-          email: formData.get('email'),
-          petName: formData.get('petName'),
-          breed: formData.get('breed'),
-          age: formData.get('age'),
-          address: formData.get('address'),
-          photo: reader.result
-        };
-        localStorage.setItem('petInfo', JSON.stringify(petData));
-        window.location.href = 'insurance.html';
-      };
-
-      reader.readAsDataURL(formData.get('photo'));
-    });
-  </script>
+  
 </body>
 </html>
