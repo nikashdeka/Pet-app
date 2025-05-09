@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pet Insurance</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Thank You for Registering!</h1>
+    <div id="petDetails"></div>
+    <section class="insurance">
+      <h2>Protect Your Pet with Our Insurance</h2>
+      <ul>
+        <li>Covers accidents & illnesses</li>
+        <li>24/7 vet helpline</li>
+        <li>No-cost annual check-ups</li>
+      </ul>
+      <button id="togglePremium">Check Premium</button>
+
+      <div id="premiumSection" style="display:none;">
+        <input type="number" id="sumInsured" placeholder="Enter Sum Insured"/>
+        <button id="calculateBtn">Calculate Premium</button>
+        <div id="premiumResult"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const petData = JSON.parse(localStorage.getItem('petInfo') || '{}');
+    const petDetailsDiv = document.getElementById('petDetails');
+
+    if (petData.photo) {
+      petDetailsDiv.innerHTML = `
+        <h3>${petData.petName} (${petData.breed})</h3>
+        <img src="${petData.photo}" alt="Pet Photo" style="max-width: 300px;"/>
+      `;
+    }
+
+    document.getElementById('togglePremium').addEventListener('click', () => {
+      document.getElementById('premiumSection').style.display = 'block';
+    });
+
+    document.getElementById('calculateBtn').addEventListener('click', () => {
+      const sumInsured = parseFloat(document.getElementById('sumInsured').value);
+      if (isNaN(sumInsured) || sumInsured <= 0) return;
+
+      const premium = calculatePremium(sumInsured);
+      document.getElementById('premiumResult').textContent = `Annual Premium: $${premium.toFixed(2)}`;
+    });
+
+    function calculatePremium(sumInsured) {
+      return sumInsured * 0.05 + 25; // example logic: base + 5% of SI
+    }
+  </script>
+</body>
+</html>

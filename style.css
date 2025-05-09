@@ -1,0 +1,33 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+  background: #f7f7f7;
+}
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+form input, form textarea {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+button {
+  padding: 10px 15px;
+  background: #008cba;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+button:disabled {
+  background: #ccc;
+}
+img {
+  margin-top: 10px;
+  max-width: 100%;
+  border-radius: 6px;
+}
