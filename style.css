@@ -7,6 +7,7 @@ body {
   max-width: 600px;
   margin: auto;
   background: #fff;
+   background: teal;
   padding: 20px;
   border-radius: 8px;
 }
