@@ -16,14 +16,73 @@ h3 {
 form,
 .package,
 #premiumCalc {
+  /* max-width: 600px; */
+  margin: 1rem auto;
+  /* padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+.owners-details {
   max-width: 600px;
   margin: 1rem auto;
   padding: 1rem;
-  background: #fff;
+  background: rgb(135, 220, 248);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 32px;
+}
+
+.pet-details {
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 1rem;
+  background: #bdfa98;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.photo-upload {
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 1rem;
+  background: #4accff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.photo-upload {
+  margin-top: 1.5rem;
+}
+
+.custom-file-upload {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.custom-file-upload input[type="file"] {
+  display: none;
+}
+
+.upload-btn {
+  background-color: #ffac53;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
   font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.upload-btn:hover {
+  background-color: #feb76a;
+}
+
+#fileCount {
+  font-size: 0.9rem;
+  color: #555;
 }
 
 label {
@@ -41,6 +100,12 @@ button {
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+}
+
+input#file-upload-button {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 button {

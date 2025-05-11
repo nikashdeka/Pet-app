@@ -11,42 +11,56 @@
     <section id="registration-page">
       <h1>Register for the Cutest Pet Photo Contest</h1>
       <form id="petForm">
-        <label>Name of the Proposer:</label>
-        <input type="text" name="proposerName" required />
+        <section class="owners-details">
+          <label>Name of the Proposer:</label>
+          <input type="text" name="proposerName" required />
 
-        <label>Communication Address:</label>
-        <input type="text" name="address" required />
+          <label>Communication Address:</label>
+          <input type="text" name="address" required />
 
-        <label>Mobile Number:</label>
-        <input type="tel" name="mobile" required />
+          <label>Mobile Number:</label>
+          <input type="tel" name="mobile" required />
 
-        <label>Email:</label>
-        <input type="email" name="email" required />
+          <label>Email:</label>
+          <input type="email" name="email" required />
+        </section>
 
-        <label>Name of Pet:</label>
-        <input type="text" name="petName" required />
+        <section class="pet-details">
+          <label>Name of your Pet:</label>
+          <input type="text" name="petName" required />
 
-        <label>Species:</label>
-        <select name="species" required>
-          <option value="">Select</option>
-          <option value="Dog">Dog</option>
-          <option value="Cat">Cat</option>
-        </select>
+          <label>Species:</label>
+          <select name="species" required>
+            <option value="">Select</option>
+            <option value="Dog">Dog</option>
+            <option value="Cat">Cat</option>
+          </select>
 
-        <label>Pet Age (Years):</label>
-        <input type="number" name="age" min="0" required />
+          <label>Pet Age (Years):</label>
+          <input type="number" name="age" min="0" required />
 
-        <label>Breed:</label>
-        <input type="text" name="breed" required />
+          <label>Breed:</label>
+          <input type="text" name="breed" required />
+        </section>
 
-        <label>Upload 3 Pet Photos:</label>
-        <input
-          type="file"
-          name="petPhotos"
-          accept="image/*"
-          multiple
-          required
-        />
+        <section class="photo-upload">
+          <label for="petPhotos"
+            >Upload 3 Best Photos of your Beloved Pet:</label
+          >
+
+          <div class="custom-file-upload">
+            <label for="petPhotos" class="upload-btn">Choose Files</label>
+            <span id="fileCount">No files chosen</span>
+            <input
+              type="file"
+              id="petPhotos"
+              name="petPhotos"
+              accept="image/*"
+              multiple
+              required
+            />
+          </div>
+        </section>
 
         <button type="submit" id="registerBtn" disabled>Register</button>
       </form>

@@ -18,6 +18,17 @@ form.addEventListener("input", () => {
   registerBtn.disabled = !(isValid && photos.length === 3);
 });
 
+const fileInput = document.getElementById("petPhotos");
+const fileCount = document.getElementById("fileCount");
+
+fileInput.addEventListener("change", () => {
+  if (fileInput.files.length > 0) {
+    fileCount.textContent = `${fileInput.files.length} file(s) selected`;
+  } else {
+    fileCount.textContent = "No files chosen";
+  }
+});
+
 // Handle registration
 form.addEventListener("submit", (e) => {
   e.preventDefault();
