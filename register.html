@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pet Photo Contest Registration</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>Cute Pet Photo Contest</h1>
-    <form id="registerForm">
-      <input type="text" name="ownerName" placeholder="Owner Name" required />
-      <input type="tel" name="phone" placeholder="Phone Number" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="text" name="petName" placeholder="Pet Name" required />
-      <input type="text" name="breed" placeholder="Breed" required />
-      <input type="number" name="age" placeholder="Pet Age" required />
-      <textarea name="address" placeholder="Address" required></textarea>
-      <input type="file" name="photo" accept="image/*" required />
-      <button type="submit" disabled id="submitBtn">Register</button>
-    </form>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Photo Contest Registration</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Cute Pet Photo Contest</h1>
+      <form id="registerForm">
+        <input type="text" name="ownerName" placeholder="Owner Name" required />
+        <input type="tel" name="phone" placeholder="Phone Number" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="text" name="petName" placeholder="Pet Name" required />
+        <input type="text" name="breed" placeholder="Breed" required />
+        <input type="number" name="age" placeholder="Pet Age" required />
+        <textarea name="address" placeholder="Address" required></textarea>
+        <input type="file" name="photo" accept="image/*" required />
+        <button type="submit" disabled id="submitBtn">Register</button>
+      </form>
+    </div>
 
-  <script>
-    const form = document.getElementById('registerForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const requiredFields = Array.from(form.querySelectorAll('[required]'));
+    <script>
+      const form = document.getElementById("registerForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const requiredFields = Array.from(form.querySelectorAll("[required]"));
 
-    form.addEventListener('input', () => {
-      const isValid = requiredFields.every(input => input.value.trim() !== '');
-      submitBtn.disabled = !isValid;
-    });
+      form.addEventListener("input", () => {
+        const isValid = requiredFields.every(
+          (input) => input.value.trim() !== ""
+        );
+        submitBtn.disabled = !isValid;
+      });
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const reader = new FileReader();
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const reader = new FileReader();
 
-      reader.onload = function() {
-        const petData = {
-          ownerName: formData.get('ownerName'),
-          phone: formData.get('phone'),
-          email: formData.get('email'),
-          petName: formData.get('petName'),
-          breed: formData.get('breed'),
-          age: formData.get('age'),
-          address: formData.get('address'),
-          photo: reader.result
+        reader.onload = function () {
+          const petData = {
+            ownerName: formData.get("ownerName"),
+            phone: formData.get("phone"),
+            email: formData.get("email"),
+            petName: formData.get("petName"),
+            breed: formData.get("breed"),
+            age: formData.get("age"),
+            address: formData.get("address"),
+            photo: reader.result,
+          };
+          localStorage.setItem("petInfo", JSON.stringify(petData));
+          window.location.href = "insurance.html";
         };
-        localStorage.setItem('petInfo', JSON.stringify(petData));
-        window.location.href = 'insurance.html';
-      };
 
-      reader.readAsDataURL(formData.get('photo'));
-    });
-  </script>
-</body>
+        reader.readAsDataURL(formData.get("photo"));
+      });
+    </script>
+  </body>
 </html>
