@@ -17,6 +17,10 @@ h3 {
 #registration-page h1 {
   color: #fff;
 }
+#insurance-landing h1 {
+  color: #fff;
+}
+
 form,
 #premiumCalc {
   /* max-width: 600px; */
