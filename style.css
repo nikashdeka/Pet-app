@@ -17,7 +17,8 @@ h3 {
 #registration-page h1 {
   color: #fff;
 }
-#insurance-landing h1, #insurance-landing h2 {
+#insurance-landing h1,
+#insurance-landing h2 {
   color: #fff;
 }
 
@@ -254,4 +255,20 @@ button#registerBtn {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.continue-btn:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.continue-btn.enabled {
+  background: #53a0ff;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.continue-btn.enabled:hover {
+  background: #79b6ff;
 }

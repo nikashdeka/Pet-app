@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirm Details</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 2rem;
+        color: #fff;
+      }
+
+      .confirmation {
+        background-color: #fff;
+
+        max-width: 800px;
+        margin: auto;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      }
+
+      h1,
+      h3 {
+        text-align: center;
+        color: #fff;
+      }
+
+      p {
+        margin: 0.5rem 0;
+        line-height: 1.5;
+        color: #333;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+      }
+
+      .buttons button {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #53a0ff;
+        color: #fff;
+        transition: background-color 0.3s;
+      }
+
+      .buttons button:hover {
+        background-color: #79b6ff;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="confirmation">
+      <h1>Confirm Your Pet Details</h1>
+      <div id="summary"></div>
+      <div class="buttons">
+        <button onclick="history.back()">Back to Edit</button>
+        <button onclick="location.href='payment.html'">
+          Proceed to Payment
+        </button>
+      </div>
+    </section>
+
+    <script>
+      const petInfo = JSON.parse(localStorage.getItem("petInfo") || "{}");
+      const addlInfo = JSON.parse(
+        localStorage.getItem("additionalPetInfo") || "{}"
+      );
+
+      const summary = document.getElementById("summary");
+      summary.innerHTML = `
+      <h3>Owner & Address</h3>
+      <p><strong>City:</strong> ${addlInfo.city || "-"}</p>
+      <p><strong>State:</strong> ${addlInfo.state || "-"}</p>
+      <p><strong>PinCode:</strong> ${addlInfo.pincode || "-"}</p>
+      <p><strong>Address:</strong> ${addlInfo.address1 || ""}, ${
+        addlInfo.address2 || ""
+      }</p>
+
+      <h3>Pet Details</h3>
+      <p><strong>Name:</strong> ${petInfo.petName || "-"}</p>
+      <p><strong>Breed:</strong> ${petInfo.breed || "-"}</p>
+      <p><strong>Age:</strong> ${petInfo.age || "-"}</p>
+      <p><strong>Pre-existing Disease:</strong> ${
+        addlInfo["pre-existing-disease"] || "-"
+      }</p>
+      <p><strong>Vaccinated:</strong> ${addlInfo.vaccinated || "-"}</p>
+    `;
+    </script>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
