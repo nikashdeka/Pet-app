@@ -5,232 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shop Insurance Plans</title>
     <link rel="stylesheet" href="style.css" />
-    <style>
-      body {
-        background-color: #121212;
-        color: #fff;
-        font-family: Arial, sans-serif;
-        padding: 2rem;
-      }
-
-      h1 {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-
-      .plans-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-        gap: 2rem;
-      }
-
-      .plan-card {
-        background: #1e1e1e;
-        padding: 1rem;
-        border-radius: 10px;
-        border-left: 6px solid #3498db;
-        box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
-        transition: 0.3s ease;
-      }
-
-      .plan-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 4px 14px rgba(255, 255, 255, 0.1);
-      }
-
-      .plan-card h3 {
-        text-align: center;
-        margin-bottom: 1rem;
-        color: #53a0ff;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.9rem;
-      }
-
-      th,
-      td {
-        padding: 0.5rem;
-        text-align: left;
-        border-bottom: 1px solid #333;
-      }
-
-      th {
-        background-color: #2c2c2c;
-      }
-
-      tr:hover td {
-        background-color: #2a2a2a;
-      }
-    </style>
   </head>
   <body>
     <h1>Compare Shop Insurance Plans</h1>
-    <div class="plans-grid">
-      <div class="plan-card" onclick="selectPlan('BASIC')">
-        <h3>BASIC</h3>
-        <table>
-          <tr>
-            <th>Coverage</th>
-            <th>₹ Values</th>
-          </tr>
-          <tr>
-            <td>Building</td>
-            <td>5L / 10L / 15L</td>
-          </tr>
-          <tr>
-            <td>Contents</td>
-            <td>1L / 2L / 3L</td>
-          </tr>
-          <tr>
-            <td>Terrorism</td>
-            <td>6L / 12L / 18L</td>
-          </tr>
-          <tr>
-            <td>Burglary</td>
-            <td>1L / 2L / 3L</td>
-          </tr>
-          <tr>
-            <td>MBD</td>
-            <td>0.5L / 1L / 1.5L</td>
-          </tr>
-          <tr>
-            <td>EEIP</td>
-            <td>0.25L / 0.5L / 0.75L</td>
-          </tr>
-          <tr>
-            <td>All Risk</td>
-            <td>0.25L / 0.5L / 0.75L</td>
-          </tr>
-          <tr>
-            <td>Baggage</td>
-            <td>10K / 10K / 20K</td>
-          </tr>
-          <tr>
-            <td>Money</td>
-            <td>5K / 10K / 15K</td>
-          </tr>
-          <tr>
-            <td>PA</td>
-            <td>1L / 2L / 3L</td>
-          </tr>
-          <tr>
-            <td>Premium</td>
-            <td>₹1610 / ₹2436 / ₹3372</td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="plan-card" onclick="selectPlan('ADVANCED')">
-        <h3>ADVANCED</h3>
-        <table>
-          <tr>
-            <th>Coverage</th>
-            <th>₹ Values</th>
-          </tr>
-          <tr>
-            <td>Building</td>
-            <td>20L / 30L / 40L / 50L</td>
-          </tr>
-          <tr>
-            <td>Contents</td>
-            <td>4L / 6L / 8L / 10L</td>
-          </tr>
-          <tr>
-            <td>Terrorism</td>
-            <td>24L / 36L / 48L / 60L</td>
-          </tr>
-          <tr>
-            <td>Burglary</td>
-            <td>4L / 6L / 8L / 10L</td>
-          </tr>
-          <tr>
-            <td>MBD</td>
-            <td>2L / 3L / 4L / 5L</td>
-          </tr>
-          <tr>
-            <td>EEIP</td>
-            <td>1L / 1.5L / 2L / 2.5L</td>
-          </tr>
-          <tr>
-            <td>All Risk</td>
-            <td>1L / 1.5L / 2L / 2.5L</td>
-          </tr>
-          <tr>
-            <td>Baggage</td>
-            <td>20K / 30K / 40K / 50K</td>
-          </tr>
-          <tr>
-            <td>Money</td>
-            <td>20K / 30K / 40K / 50K</td>
-          </tr>
-          <tr>
-            <td>PA</td>
-            <td>4L / 5L / 7.5L / 10L</td>
-          </tr>
-          <tr>
-            <td>Premium</td>
-            <td>₹6253 / ₹8199 / ₹10280</td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="plan-card" onclick="selectPlan('ELITE')">
-        <h3>ELITE</h3>
-        <table>
-          <tr>
-            <th>Coverage</th>
-            <th>₹ Values</th>
-          </tr>
-          <tr>
-            <td>Building</td>
-            <td>75L / 1Cr / 1.5Cr</td>
-          </tr>
-          <tr>
-            <td>Contents</td>
-            <td>15L / 20L</td>
-          </tr>
-          <tr>
-            <td>Terrorism</td>
-            <td>90L / 1.2Cr</td>
-          </tr>
-          <tr>
-            <td>Burglary</td>
-            <td>15L / 20L</td>
-          </tr>
-          <tr>
-            <td>MBD</td>
-            <td>7.5L / 10L</td>
-          </tr>
-          <tr>
-            <td>EEIP</td>
-            <td>3.75L / 5L</td>
-          </tr>
-          <tr>
-            <td>All Risk</td>
-            <td>3.75L / 5L</td>
-          </tr>
-          <tr>
-            <td>Baggage</td>
-            <td>75K / 1L</td>
-          </tr>
-          <tr>
-            <td>Money</td>
-            <td>75K / 1L</td>
-          </tr>
-          <tr>
-            <td>PA</td>
-            <td>10L / 10L</td>
-          </tr>
-          <tr>
-            <td>Premium</td>
-            <td>₹14994 / ₹19959 / ₹25500</td>
-          </tr>
-        </table>
-      </div>
-    </div>
+    <div id="plansContainer" class="plans-grid"></div>
 
     <script>
       function selectPlan(plan) {
@@ -240,6 +18,89 @@
           "additional-data-form.html?product=shop&plan=" +
           encodeURIComponent(plan);
       }
+
+      fetch("plans.json")
+        .then((res) => res.json())
+        .then((data) => {
+          const container = document.getElementById("plansContainer");
+
+          Object.entries(data).forEach(([planName, coverages]) => {
+            const card = document.createElement("div");
+            card.className = "plan-card";
+            card.onclick = () => selectPlan(planName);
+
+            // Sum up ₹ values
+            let estimatedTotal = 0;
+
+            const rows = Object.entries(coverages)
+              .map(([coverage, value]) => {
+                const isPremiumRow = coverage.toLowerCase().includes("premium");
+                const boldClass = isPremiumRow ? ' class="highlight-row"' : "";
+
+                // Accumulate sum for non-premium rows
+                if (!isPremiumRow) {
+                  value.split("|").forEach((v) => {
+                    const clean = v.trim();
+                    let num = parseFloat(clean.replace(/[^0-9.]/g, ""));
+                    if (clean.includes("Cr")) num *= 1e7;
+                    else if (clean.includes("L")) num *= 1e5;
+                    else if (clean.includes("K")) num *= 1e3;
+                    if (!isNaN(num)) estimatedTotal += num;
+                  });
+                }
+
+                const padded = value
+                  .split("|")
+                  .map((part) => part.trim().padStart(8, " "))
+                  .join(" |");
+
+                return `<tr${boldClass}><td>${coverage}</td><td><code>${padded}</code></td></tr>`;
+              })
+              .join("");
+
+            card.innerHTML = `
+              <h3>${planName}</h3>
+              <table class="table-wrapper">
+                <tr><th>Coverage</th><th>₹ Values</th></tr>
+                ${rows}
+              </table>
+              
+              <button class="toggle-coverage">View Coverages</button>
+              <div class="coverage-details">
+                <h4>SECTION - 1: We Cover</h4>
+                <ul>
+                  <li>Fire</li>
+                  <li>Explosion or Implosion</li>
+                  <li>Lightning</li>
+                  <li>Earthquake, volcanic eruption, convulsions of nature</li>
+                  <li>Storm, Cyclone, Hurricane, Tsunami, Flood, etc.</li>
+                  <li>Land subsidence, Landslide, Rockslide</li>
+                  <li>Bush/Forest/Jungle fire</li>
+                  <li>Impact from falling objects (trees, vehicles, aircraft)</li>
+                  <li>Missile testing operations</li>
+                  <li>Riots, Strikes, Malicious Damages</li>
+                  <li>Acts of Terrorism</li>
+                  <li>Overflow of tanks/pipes</li>
+                  <li>Leakage from sprinklers</li>
+                  <li>Theft within 7 days of any insured event</li>
+                </ul>
+              </div>
+            `;
+
+            container.appendChild(card);
+          });
+
+          // Toggle coverage visibility
+          document.querySelectorAll(".toggle-coverage").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              const details = btn.nextElementSibling;
+              const open = details.style.display === "block";
+              details.style.display = open ? "none" : "block";
+              btn.textContent = open ? "View Coverages" : "Hide Coverages";
+            });
+          });
+        });
     </script>
   </body>
 </html>

@@ -181,3 +181,20 @@ calculateBtn.addEventListener("click", () => {
     premiumResult.textContent = `Enter a valid Sum Insured amount.`;
   }
 });
+
+// ===========================================
+function selectPlan(plan) {
+  localStorage.setItem("selectedPlan", plan);
+  localStorage.setItem("productType", "shop");
+  window.location.href =
+    "additional-data-form.html?product=shop&plan=" + encodeURIComponent(plan);
+}
+
+// Auto-wrap second column of each row in <code>
+document.querySelectorAll(".plan-card table tr").forEach((row) => {
+  const cells = row.querySelectorAll("td");
+  if (cells.length === 2 && !cells[1].querySelector("code")) {
+    const value = cells[1].innerHTML.trim();
+    cells[1].innerHTML = `<code>${value}</code>`;
+  }
+});
