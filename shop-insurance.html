@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop Insurance Plans</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Compare Shop Insurance Plans</h1>
+    <div id="plansContainer" class="plans-grid"></div>
+
+    <script>
+      function selectPlan(plan) {
+        localStorage.setItem("selectedPlan", plan);
+        localStorage.setItem("productType", "shop");
+        window.location.href =
+          "additional-data-form.html?product=shop&plan=" +
+          encodeURIComponent(plan);
+      }
+
+      fetch("plans.json")
+        .then((res) => res.json())
+        .then((data) => {
+          const container = document.getElementById("plansContainer");
+
+          Object.entries(data).forEach(([planName, coverages]) => {
+            const card = document.createElement("div");
+            card.className = "plan-card";
+            card.onclick = () => selectPlan(planName);
+
+            // Sum up ₹ values
+            let estimatedTotal = 0;
+
+            const rows = Object.entries(coverages)
+              .map(([coverage, value]) => {
+                const isPremiumRow = coverage.toLowerCase().includes("premium");
+                const boldClass = isPremiumRow ? ' class="highlight-row"' : "";
+
+                // Accumulate sum for non-premium rows
+                if (!isPremiumRow) {
+                  value.split("|").forEach((v) => {
+                    const clean = v.trim();
+                    let num = parseFloat(clean.replace(/[^0-9.]/g, ""));
+                    if (clean.includes("Cr")) num *= 1e7;
+                    else if (clean.includes("L")) num *= 1e5;
+                    else if (clean.includes("K")) num *= 1e3;
+                    if (!isNaN(num)) estimatedTotal += num;
+                  });
+                }
+
+                const padded = value
+                  .split("|")
+                  .map((part) => part.trim().padStart(8, " "))
+                  .join(" |");
+
+                return `<tr${boldClass}><td>${coverage}</td><td><code>${padded}</code></td></tr>`;
+              })
+              .join("");
+
+            card.innerHTML = `
+              <h3>${planName}</h3>
+              <table class="table-wrapper">
+                <tr><th>Coverage</th><th>₹ Values</th></tr>
+                ${rows}
+              </table>
+              
+              <button class="toggle-coverage">View Coverages</button>
+              <div class="coverage-details">
+                <h4>SECTION - 1: We Cover</h4>
+                <ul>
+                  <li>Fire</li>
+                  <li>Explosion or Implosion</li>
+                  <li>Lightning</li>
+                  <li>Earthquake, volcanic eruption, convulsions of nature</li>
+                  <li>Storm, Cyclone, Hurricane, Tsunami, Flood, etc.</li>
+                  <li>Land subsidence, Landslide, Rockslide</li>
+                  <li>Bush/Forest/Jungle fire</li>
+                  <li>Impact from falling objects (trees, vehicles, aircraft)</li>
+                  <li>Missile testing operations</li>
+                  <li>Riots, Strikes, Malicious Damages</li>
+                  <li>Acts of Terrorism</li>
+                  <li>Overflow of tanks/pipes</li>
+                  <li>Leakage from sprinklers</li>
+                  <li>Theft within 7 days of any insured event</li>
+                </ul>
+              </div>
+            `;
+
+            container.appendChild(card);
+          });
+
+          // Toggle coverage visibility
+          document.querySelectorAll(".toggle-coverage").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              const details = btn.nextElementSibling;
+              const open = details.style.display === "block";
+              details.style.display = open ? "none" : "block";
+              btn.textContent = open ? "View Coverages" : "Hide Coverages";
+            });
+          });
+        });
+    </script>
+  </body>
+</html>
