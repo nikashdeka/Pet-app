@@ -287,7 +287,7 @@ button#registerBtn {
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   table-layout: fixed;
 }
 
@@ -337,7 +337,7 @@ td code {
   margin-top: 3rem;
   cursor: pointer;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   border: 1px solid #e8e8e8;
 }
 
