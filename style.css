@@ -216,7 +216,7 @@ button#registerBtn {
 
 .plan-card ul li {
   padding: 0.3rem 0;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   color: #333;
   display: flex;
   align-items: center;
@@ -337,7 +337,7 @@ td code {
   margin-top: 3rem;
   cursor: pointer;
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   border: 1px solid #e8e8e8;
 }
 
