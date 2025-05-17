@@ -1,0 +1,47 @@
+/* Typography and global reset */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #353434;
+  color: #333;
+}
+h1,
+h2,
+h3 {
+  text-align: center;
+  color: #cccdce;
+}
+button {
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border: none;
+}
+button:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+button:hover:not(:disabled) {
+  background: #79b6ff;
+}
+input,
+select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+code {
+  font-family: "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
+}

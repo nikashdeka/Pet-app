@@ -1,0 +1,79 @@
+.shop-plans-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+.shop-plan-card {
+  flex: 1 1 320px;
+  max-width: 380px;
+  background: #1e1e1e;
+  color: #fff;
+  border-left: 6px solid #3498db;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+  transition: 0.3s ease;
+}
+.shop-plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.1);
+}
+.shop-plan-card table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+.shop-plan-card th,
+.shop-plan-card td {
+  padding: 0.4rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.shop-plan-card td:first-child,
+.shop-plan-card th:first-child {
+  text-align: left;
+}
+.shop-plan-card .highlight-row td {
+  font-weight: bold;
+  color: #fff;
+  background-color: #2767a3;
+}
+.shop-plan-card .table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+.shop-plan-card .toggle-coverage {
+  background: none;
+  color: #79b6ff;
+  border: 1px solid #79b6ff;
+  margin-top: 1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.coverage-details {
+  display: none;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  border: 1px solid #333;
+}
+.plan-footer {
+  text-align: center;
+  margin-top: 1rem;
+}
+.select-plan {
+  background: #53a0ff;
+  color: white;
+}
+.select-plan:hover {
+  background-color: #79b6ff;
+}

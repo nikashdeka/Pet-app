@@ -1,0 +1,106 @@
+#registration-page h1,
+#insurance-landing h1,
+#insurance-landing h2 {
+  color: #fff;
+}
+form {
+  margin: 1rem auto;
+}
+.owners-details,
+.pet-details,
+.photo-upload {
+  background: #fff;
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.photo-upload {
+  margin-top: 1.5rem;
+}
+.custom-file-upload {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.custom-file-upload input[type="file"] {
+  display: none;
+}
+.upload-btn {
+  background: #53a0ff;
+  color: white;
+}
+#fileCount {
+  font-size: 0.9rem;
+  color: #555;
+}
+#registerBtn {
+  text-transform: uppercase;
+  max-width: 630px;
+  margin: auto;
+  display: block;
+}
+.photo-preview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem auto;
+  max-width: 800px;
+  animation: fadeIn 1s ease-in;
+}
+.photo-preview img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem;
+}
+.plan-card {
+  background: #fff;
+  padding: 1rem;
+  border-left: 6px solid #3498db;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+.plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+.plan-card h3 {
+  text-align: center;
+  color: #2980b9;
+}
+.plan-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+.plan-card li {
+  padding: 0.3rem 0;
+}
+.plan-card li.uncovered {
+  text-decoration: line-through;
+  color: #bbb;
+}
+.premium {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1rem;
+}
