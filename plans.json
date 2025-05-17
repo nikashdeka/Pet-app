@@ -1,44 +1,44 @@
 {
-  "BASIC": {
-    "Building": "5L | 10L | 15L | 20L",
-    "Contents": "1L | 2L | 3L | 4L",
-    "Terrorism": "6L | 12L | 18L | 24L",
-    "Burglary": "1L | 2L | 3L | 4L",
-    "MBD": "50K | 1L | 1.5L | 2L",
-    "EEIP": "25K | 5K | 75K | 1L",
-    "All Risk": "25K | 5K | 75K | 1L",
-    "Baggage (5 Per)": "10K | 10K | 20K | 20K",
-    "Money": "5K | 110K | 15K | 20K",
-    "PA (1 Per)": "1L | 2L | 3L | 4L",
-    "TP Liability": "1L | 2L | 3L | 4L",
-    "Premium": "₹1123 | ₹2246 | ₹3369 | ₹4492"
-  },
-  "ADVANCED": {
-    "Building": "5L | 10L | 15L | 20L",
-    "Contents": "1L | 2L | 3L | 4L",
-    "Terrorism": "6L | 12L | 18L | 24L",
-    "Burglary": "1L | 2L | 3L | 4L",
-    "MBD": "50K | 1L | 1.5L | 2L",
-    "EEIP": "25K | 5K | 75K | 1L",
-    "All Risk": "25K | 5K | 75K | 1L",
-    "Baggage (5 Per)": "10K | 10K | 20K | 20K",
-    "Money": "5K | 110K | 15K | 20K",
-    "PA (1 Per)": "1L | 2L | 3L | 4L",
-    "TP Liability": "1L | 2L | 3L | 4L",
-    "Premium": "₹1123 | ₹2246 | ₹3369 | ₹4492"
-  },
-  "ELITE": {
-    "Building": "5L | 10L | 15L | 20L",
-    "Contents": "1L | 2L | 3L | 4L",
-    "Terrorism": "6L | 12L | 18L | 24L",
-    "Burglary": "1L | 2L | 3L | 4L",
-    "MBD": "50K | 1L | 1.5L | 2L",
-    "EEIP": "25K | 5K | 75K | 1L",
-    "All Risk": "25K | 5K | 75K | 1L",
-    "Baggage (5 Per)": "10K | 10K | 20K | 20K",
-    "Money": "5K | 110K | 15K | 20K",
-    "PA (1 Per)": "1L | 2L | 3L | 4L",
-    "TP Liability": "1L | 2L | 3L | 4L",
-    "Premium": "₹1123 | ₹2246 | ₹3369 | ₹4492"
-  }
+  "BASIC": [
+    ["Building", ["5L", "10L", "15L", "20L"]],
+    ["Contents", ["1L", "2L", "3L", "4L"]],
+    ["Terrorism", ["6L", "12L", "18L", "24L"]],
+    ["Burglary", ["1L", "2L", "3L", "4L"]],
+    ["MBD", ["50K", "1L", "1.5L", "2L"]],
+    ["EEIP", ["25K", "5K", "75K", "1L"]],
+    ["All Risk", ["25K", "5K", "75K", "1L"]],
+    ["Baggage (5 Per)", ["10K", "10K", "20K", "20K"]],
+    ["Money", ["5K", "110K", "15K", "20K"]],
+    ["PA (1 Per)", ["1L", "2L", "3L", "4L"]],
+    ["TP Liability", ["1L", "2L", "3L", "4L"]],
+    ["Premium", ["₹1123", "₹2246", "₹3369", "₹4492"]]
+  ],
+  "ADVANCED": [
+    ["Building", ["5L", "10L", "15L", "20L"]],
+    ["Contents", ["1L", "2L", "3L", "4L"]],
+    ["Terrorism", ["6L", "12L", "18L", "24L"]],
+    ["Burglary", ["1L", "2L", "3L", "4L"]],
+    ["MBD", ["50K", "1L", "1.5L", "2L"]],
+    ["EEIP", ["25K", "5K", "75K", "1L"]],
+    ["All Risk", ["25K", "5K", "75K", "1L"]],
+    ["Baggage (5 Per)", ["10K", "10K", "20K", "20K"]],
+    ["Money", ["5K", "110K", "15K", "20K"]],
+    ["PA (1 Per)", ["1L", "2L", "3L", "4L"]],
+    ["TP Liability", ["1L", "2L", "3L", "4L"]],
+    ["Premium", ["₹1123", "₹2246", "₹3369", "₹4492"]]
+  ],
+  "ELITE": [
+    ["Building", ["5L", "10L", "15L", "20L"]],
+    ["Contents", ["1L", "2L", "3L", "4L"]],
+    ["Terrorism", ["6L", "12L", "18L", "24L"]],
+    ["Burglary", ["1L", "2L", "3L", "4L"]],
+    ["MBD", ["50K", "1L", "1.5L", "2L"]],
+    ["EEIP", ["25K", "5K", "75K", "1L"]],
+    ["All Risk", ["25K", "5K", "75K", "1L"]],
+    ["Baggage (5 Per)", ["10K", "10K", "20K", "20K"]],
+    ["Money", ["5K", "110K", "15K", "20K"]],
+    ["PA (1 Per)", ["1L", "2L", "3L", "4L"]],
+    ["TP Liability", ["1L", "2L", "3L", "4L"]],
+    ["Premium", ["₹1123", "₹2246", "₹3369", "₹4492"]]
+  ]
 }

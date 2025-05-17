@@ -5,100 +5,257 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shop Insurance Plans</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        background-color: #121212;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        padding: 2rem;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .shop-plans-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: flex-start;
+        margin-top: 2rem;
+      }
+
+      .shop-plan-card {
+        flex: 1 1 320px;
+        max-width: 380px;
+        background: #1e1e1e;
+        border-left: 6px solid #3498db;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+        transition: 0.3s ease;
+      }
+
+      .shop-plan-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 18px rgba(255, 255, 255, 0.1);
+      }
+
+      .table-wrapper {
+        overflow-x: auto;
+      }
+
+      table {
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+
+      th,
+      td {
+        padding: 0.4rem;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      td:first-child,
+      th:first-child {
+        text-align: left;
+        width: 35%;
+      }
+
+      code {
+        font-family: "Courier New", monospace;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .highlight-row {
+        font-weight: bold;
+        background-color: #2b2b2b;
+      }
+
+      .coverage-details {
+        display: none;
+        margin-top: 1rem;
+        padding: 0.5rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        line-height: 1.4;
+        border: 1px solid #333;
+      }
+
+      .plan-footer {
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      .select-plan {
+        background: #53a0ff;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        color: white;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .select-plan:hover {
+        background-color: #79b6ff;
+      }
+    </style>
   </head>
   <body>
     <h1>Compare Shop Insurance Plans</h1>
-    <div id="plansContainer" class="plans-grid"></div>
+    <div id="plansContainer" class="shop-plans-grid"></div>
 
     <script>
-      function selectPlan(plan) {
+      const PLAN_DATA_URL = "plans.json";
+
+      const selectPlan = (plan) => {
         localStorage.setItem("selectedPlan", plan);
         localStorage.setItem("productType", "shop");
-        window.location.href =
-          "additional-data-form.html?product=shop&plan=" +
-          encodeURIComponent(plan);
-      }
+        window.location.href = `additional-data-form.html?product=shop&plan=${encodeURIComponent(
+          plan
+        )}`;
+      };
 
-      fetch("plans.json")
+      const parseValue = (value) => {
+        const clean = value.trim();
+        let num = parseFloat(clean.replace(/[^0-9.]/g, ""));
+        if (clean.includes("Cr")) num *= 1e7;
+        else if (clean.includes("L")) num *= 1e5;
+        else if (clean.includes("K")) num *= 1e3;
+        return isNaN(num) ? 0 : num;
+      };
+
+      const calcSumInsured = (table) =>
+        table.reduce(
+          (sum, [label, values]) =>
+            label.toLowerCase().includes("premium")
+              ? sum
+              : sum + values.reduce((acc, val) => acc + parseValue(val), 0),
+          0
+        );
+
+      const formatTable = (table) => {
+        const tierCount = table[0][1].length;
+        const colgroup = `
+        <col style="width: 35%;">
+        ${Array(tierCount)
+          .fill(`<col style="width: ${(65 / tierCount).toFixed(2)}%;">`)
+          .join("")}
+      `;
+        const headerRow = `
+        <tr>
+          <th><code>Coverage</code></th>
+          ${Array.from(
+            { length: tierCount },
+            (_, i) => `<th><code>Tier ${i + 1}</code></th>`
+          ).join("")}
+        </tr>
+      `;
+        const rows = table
+          .map(([coverage, values]) => {
+            const highlight = coverage.toLowerCase().includes("premium")
+              ? ' class="highlight-row"'
+              : "";
+            const tds = values
+              .map((val) => `<td><code>${val}</code></td>`)
+              .join("");
+            return `<tr${highlight}><td><code>${coverage}</code></td>${tds}</tr>`;
+          })
+          .join("");
+        return `
+        <div class="table-wrapper">
+          <table>
+            ${colgroup}
+            ${headerRow}
+            ${rows}
+          </table>
+        </div>
+      `;
+      };
+
+      const buildCoverageDetails = (id) => `
+      <button class="toggle-coverage" data-target="coverage-${id}">View Coverages</button>
+      <div id="coverage-${id}" class="coverage-details">
+        <h4>SECTION - 1: We Cover</h4>
+        <ul>
+          <li>Fire</li>
+          <li>Explosion or Implosion</li>
+          <li>Lightning</li>
+          <li>Earthquake, volcanic eruption, convulsions of nature</li>
+          <li>Storm, Cyclone, Hurricane, Tsunami, Flood, etc.</li>
+          <li>Land subsidence, Landslide, Rockslide</li>
+          <li>Bush/Forest/Jungle fire</li>
+          <li>Impact from falling objects (trees, vehicles, aircraft)</li>
+          <li>Missile testing operations</li>
+          <li>Riots, Strikes, Malicious Damages</li>
+          <li>Acts of Terrorism</li>
+          <li>Overflow of tanks/pipes</li>
+          <li>Leakage from sprinklers</li>
+          <li>Theft within 7 days of any insured event</li>
+        </ul>
+      </div>`;
+
+      const buildSelectButton = (planName) => `
+      <div class="plan-footer">
+        <button class="select-plan" data-plan="${planName}">Select Plan</button>
+      </div>
+    `;
+
+      fetch(PLAN_DATA_URL)
         .then((res) => res.json())
-        .then((data) => {
+        .then((plans) => {
           const container = document.getElementById("plansContainer");
 
-          Object.entries(data).forEach(([planName, coverages]) => {
+          Object.entries(plans).forEach(([planName, tableData]) => {
             const card = document.createElement("div");
-            card.className = "plan-card";
-            card.onclick = () => selectPlan(planName);
+            card.className = "shop-plan-card";
 
-            // Sum up ₹ values
-            let estimatedTotal = 0;
+            const sum = calcSumInsured(tableData);
+            const formattedSum = sum.toLocaleString("en-IN", {
+              style: "currency",
+              currency: "INR",
+              maximumFractionDigits: 0,
+            });
 
-            const rows = Object.entries(coverages)
-              .map(([coverage, value]) => {
-                const isPremiumRow = coverage.toLowerCase().includes("premium");
-                const boldClass = isPremiumRow ? ' class="highlight-row"' : "";
-
-                // Accumulate sum for non-premium rows
-                if (!isPremiumRow) {
-                  value.split("|").forEach((v) => {
-                    const clean = v.trim();
-                    let num = parseFloat(clean.replace(/[^0-9.]/g, ""));
-                    if (clean.includes("Cr")) num *= 1e7;
-                    else if (clean.includes("L")) num *= 1e5;
-                    else if (clean.includes("K")) num *= 1e3;
-                    if (!isNaN(num)) estimatedTotal += num;
-                  });
-                }
-
-                const padded = value
-                  .split("|")
-                  .map((part) => part.trim().padStart(8, " "))
-                  .join(" |");
-
-                return `<tr${boldClass}><td>${coverage}</td><td><code>${padded}</code></td></tr>`;
-              })
-              .join("");
+            const planId = planName.toLowerCase().replace(/\s+/g, "-");
 
             card.innerHTML = `
-              <h3>${planName}</h3>
-              <table class="table-wrapper">
-                <tr><th>Coverage</th><th>₹ Values</th></tr>
-                ${rows}
-              </table>
-              
-              <button class="toggle-coverage">View Coverages</button>
-              <div class="coverage-details">
-                <h4>SECTION - 1: We Cover</h4>
-                <ul>
-                  <li>Fire</li>
-                  <li>Explosion or Implosion</li>
-                  <li>Lightning</li>
-                  <li>Earthquake, volcanic eruption, convulsions of nature</li>
-                  <li>Storm, Cyclone, Hurricane, Tsunami, Flood, etc.</li>
-                  <li>Land subsidence, Landslide, Rockslide</li>
-                  <li>Bush/Forest/Jungle fire</li>
-                  <li>Impact from falling objects (trees, vehicles, aircraft)</li>
-                  <li>Missile testing operations</li>
-                  <li>Riots, Strikes, Malicious Damages</li>
-                  <li>Acts of Terrorism</li>
-                  <li>Overflow of tanks/pipes</li>
-                  <li>Leakage from sprinklers</li>
-                  <li>Theft within 7 days of any insured event</li>
-                </ul>
-              </div>
-            `;
+            <h3>${planName}</h3>
+            ${formatTable(tableData)}
+            <p style="text-align:right; margin-top:1rem; font-size:0.85rem; color:#ccc;">
+              Indicative Sum Insured: <strong>${formattedSum}</strong>
+            </p>
+            ${buildCoverageDetails(planId)}
+            ${buildSelectButton(planName)}
+          `;
 
             container.appendChild(card);
           });
 
-          // Toggle coverage visibility
-          document.querySelectorAll(".toggle-coverage").forEach((btn) => {
-            btn.addEventListener("click", (e) => {
+          document.addEventListener("click", (e) => {
+            if (e.target.matches(".toggle-coverage")) {
+              const targetId = e.target.dataset.target;
+              const section = document.getElementById(targetId);
+              const isOpen = section.style.display === "block";
+              section.style.display = isOpen ? "none" : "block";
+              e.target.textContent = isOpen
+                ? "View Coverages"
+                : "Hide Coverages";
+            }
+
+            if (e.target.matches(".select-plan")) {
               e.stopPropagation();
-              const details = btn.nextElementSibling;
-              const open = details.style.display === "block";
-              details.style.display = open ? "none" : "block";
-              btn.textContent = open ? "View Coverages" : "Hide Coverages";
-            });
+              const plan = e.target.getAttribute("data-plan");
+              selectPlan(plan);
+            }
           });
         });
     </script>

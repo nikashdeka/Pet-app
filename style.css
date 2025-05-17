@@ -279,52 +279,6 @@ button#registerBtn {
   background: #79b6ff;
 }
 
-.table-wrapper {
-  overflow-x: auto;
-  max-width: 100%;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
-  table-layout: fixed;
-}
-
-th,
-td {
-  padding: 0.2rem;
-  border-bottom: 1px solid #333;
-}
-
-th {
-  background-color: #2c2c2c;
-  text-align: left;
-  color: #79b6ff;
-}
-
-td:first-child,
-th:first-child {
-  width: 30%;
-  text-align: left;
-  white-space: normal;
-  word-break: break-word;
-}
-
-td:last-child,
-th:last-child {
-  width: 70%;
-  text-align: left;
-}
-
-td code {
-  display: block;
-  font-family: "Courier New", Courier, monospace;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-  color: #333;
-}
-
 .highlight-row td {
   font-weight: bold;
   color: #333;
@@ -341,14 +295,57 @@ td code {
   border: 1px solid #e8e8e8;
 }
 
+.shop-plans-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+
+.shop-plan-card {
+  flex: 1 1 320px;
+  max-width: 380px;
+  background: #1e1e1e;
+  border-left: 6px solid #3498db;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+  transition: 0.3s ease;
+}
+.shop-plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.1);
+}
+
 .coverage-details {
-  margin-top: 1rem;
-  padding: 0.5rem 0.5rem;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  line-height: 1.4;
   display: none;
-  border: 1px solid #e8e8e8;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  border: 1px solid #333;
+}
+
+.plan-footer {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.select-plan {
+  background: #53a0ff;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.select-plan:hover {
+  background-color: #79b6ff;
 }
 
 .coverage-details h4 {
@@ -358,4 +355,41 @@ td code {
 
 .coverage-details ul {
   padding-left: 1rem;
+}
+
+/* ----------------- */
+.table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+td,
+th {
+  padding: 0.2rem;
+  text-align: center;
+  white-space: nowrap;
+  word-wrap: break-word;
+  width: 2rem;
+}
+
+td:first-child,
+th:first-child {
+  text-align: left;
+  min-width: auto;
+  text-wrap: wrap;
+}
+
+td code,
+th code {
+  font-variant-numeric: tabular-nums;
+  display: block;
+}
+th {
+  width: 2.5px;
 }
