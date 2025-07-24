@@ -44,7 +44,7 @@
       const formatTable = (table) => {
         const tierCount = table[0][1].length;
         const colgroup = `
-        <col style="width: 50%;">
+        <col style="width: 35%;">
         ${Array(tierCount)
           .fill(`<col style="width: ${(100 / tierCount).toFixed(2)}%;">`)
           .join("")}
