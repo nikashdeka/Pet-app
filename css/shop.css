@@ -32,7 +32,7 @@
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis; */
 }
 .shop-plan-card td:first-child,
 .shop-plan-card th:first-child {
