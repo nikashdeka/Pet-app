@@ -1,5 +1,5 @@
 .shop-plans-grid {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
@@ -7,8 +7,8 @@
   margin-top: 2rem;
 }
 .shop-plan-card {
-  flex: 1 1 320px;
-  max-width: 380px;
+  flex: 1 1 100%;
+  max-width: 100%;
   background: #1e1e1e;
   color: #fff;
   border-left: 6px solid #3498db;
@@ -22,7 +22,7 @@
   box-shadow: 0 6px 18px rgba(255, 255, 255, 0.1);
 }
 .shop-plan-card table {
-  table-layout: fixed;
+  table-layout: auto;
   width: 100%;
   border-collapse: collapse;
 }
@@ -30,7 +30,7 @@
 .shop-plan-card td {
   padding: 0.4rem;
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
   /* text-overflow: ellipsis; */
 }
